@@ -30,14 +30,15 @@ processing.run("qgis:joinbylocationsummary", {'INPUT':"S:/682/Spring20/ecoholan/
 'SUMMARIES':0,'OUTPUT':"S:/682/Spring20/ecoholan/gunfinal.shp"})
 
 gunfinal = "S:/682/Spring20/ecoholan/gunfinal.shp"
+iface.addVectorLayer(gunfinal, "gunfinal", "ogr")
 gunfinal = iface.activeLayer()
 
 pv = gunfinal.dataProvider()
-pv.addAttributes([QgsField('GC_per_10000', QVariant.Double), QgsField('SS_per_10000', QVariant.Double)])
+pv.addAttributes([QgsField('GC_per', QVariant.Double), QgsField('SS_per', QVariant.Double)])
 gunfinal.updateFields()
 
-expression1 = QgsExpression("'CCN_count'/('POP_2010'/10000)")
-expression2 = QgsExpression("'ID_count'/('POP_2010'/10000)")
+expression1 = QgsExpression("CCN_count/(POP_2010/10000)")
+expression2 = QgsExpression("ID_count/(POP_2010/10000)")
 
 context = QgsExpressionContext()
 context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(gunfinal))
@@ -45,12 +46,18 @@ context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(gunfinal
 with edit(gunfinal):
     for i in gunfinal.getFeatures():
         context.setFeature(i)
-        i['GC_per_10000'] = expression1.evaluate(context)
+        i['GC_per'] = expression1.evaluate(context)
         gunfinal.updateFeature(i)
         
 with edit(gunfinal):
     for i in gunfinal.getFeatures():
         context.setFeature(i)
-        i['SS_per_10000'] = expression2.evaluate(context)
+        i['SS_per'] = expression2.evaluate(context)
         gunfinal.updateFeature(i)
         
+features = gunfinal.getFeatures()        
+        
+for feature in features:
+    print(gunfinal['NAME'], 'gun crimes committed per 10,000 people:', gunfinal['GC_per'], \
+    'number of shooting incidents detected by Shot Spotter per 10,000 people', gunfinal['SS_per'])
+    
