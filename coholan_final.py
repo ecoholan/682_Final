@@ -54,10 +54,9 @@ with edit(gunfinal):
         context.setFeature(i)
         i['SS_per'] = expression2.evaluate(context)
         gunfinal.updateFeature(i)
-        
-features = gunfinal.getFeatures()        
-        
-for feature in features:
-    print(gunfinal['NAME'], 'gun crimes committed per 10,000 people:', gunfinal['GC_per'], \
-    'number of shooting incidents detected by Shot Spotter per 10,000 people', gunfinal['SS_per'])
-    
+
+fc = gunfinal.featureCount()
+
+for i in range(0, fc):
+    feat = gunfinal.getFeature(i)
+    print(feat['NAME'], 'Gun Crimes per 10,000 people:', feat['GC_per'], 'Shooting Incidents per 10,000 people:', feat['SS_per'])
