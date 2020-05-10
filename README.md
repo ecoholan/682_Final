@@ -1,4 +1,3 @@
-
 <p align="center">
   <b>2017 Washington D.C. Gun Crime Analysis</b><br>
   <b>Eric Coholan</b><br>
