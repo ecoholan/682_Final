@@ -4,4 +4,6 @@
   <b>4/30/2020</b><br>
 </p>
 
-### Introduction
+
+#### Introduction
+To determine if expansion of the ShotSpotter gun detection network is necessary, the project assessed gun crime rates and ShotSpotter shooting incident detection rates on a per-ward basis. Utilizing publicly available data sources, the number of gun crimes committed per 10,000 people and the number of shooting incidents detected by ShotSpotter were calculated for each ward and visualized through QGIS 3.49 mapping tools. The calculation process was then automated with Python code, enabling the same analysis to be performed on alternate data.
