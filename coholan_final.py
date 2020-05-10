@@ -20,43 +20,57 @@ writer = QgsVectorFileWriter.writeAsVectorFormat(crimes, fn, 'utf-8', \
 driverName = 'ESRI Shapefile', onlySelected = True)
 del(writer)
 
-processing.run("qgis:joinbylocationsummary", {'INPUT':ward,'JOIN':"S:/682/Spring20/ecoholan/guncrimes.shp",'PREDICATE':1, \
-'SUMMARIES':0,'OUTPUT':"S:/682/Spring20/ecoholan/gunjoin.shp"})
+guncrimes = fn
+iface.addVectorLayer(guncrimes, "guncrimes", "ogr")
 
-processing.run("qgis:intersection", {'INPUT':gunshots, 'OVERLAY':ward,\
-'OUTPUT':"S:682/Spring20/ecoholan/intersect.shp"})
+processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIELD':"NUMPOINTS", 'OUTPUT':"S:/682/Spring20/ecoholan/count.shp"})
 
-processing.run("qgis:joinbylocationsummary", {'INPUT':"S:/682/Spring20/ecoholan/gunjoin.shp",'JOIN':"S:682/Spring20/ecoholan/intersect.shp",'PREDICATE':1, \
-'SUMMARIES':0,'OUTPUT':"S:/682/Spring20/ecoholan/gunfinal.shp"})
+count = "S:/682/Spring20/ecoholan/count.shp"
+iface.addVectorLayer(count, "count", "ogr")
+count = iface.activeLayer()
 
-gunfinal = "S:/682/Spring20/ecoholan/gunfinal.shp"
-iface.addVectorLayer(gunfinal, "gunfinal", "ogr")
-gunfinal = iface.activeLayer()
+pv = count.dataProvider()
+pv.addAttributes([QgsField('GC_per', QVariant.Double)])
+count.updateFields()
 
-pv = gunfinal.dataProvider()
-pv.addAttributes([QgsField('GC_per', QVariant.Double), QgsField('SS_per', QVariant.Double)])
-gunfinal.updateFields()
-
-expression1 = QgsExpression("CCN_count/(POP_2010/10000)")
-expression2 = QgsExpression("ID_count/(POP_2010/10000)")
+expression = QgsExpression("NUMPOINTS/(POP_2010/10000)")
 
 context = QgsExpressionContext()
-context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(gunfinal))
+context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(count))
 
-with edit(gunfinal):
-    for i in gunfinal.getFeatures():
+with edit(count):
+    for i in count.getFeatures():
         context.setFeature(i)
-        i['GC_per'] = expression1.evaluate(context)
-        gunfinal.updateFeature(i)
+        i['GC_per'] = expression.evaluate(context)
+        count.updateFeature(i)
         
-with edit(gunfinal):
-    for i in gunfinal.getFeatures():
-        context.setFeature(i)
-        i['SS_per'] = expression2.evaluate(context)
-        gunfinal.updateFeature(i)
-
-fc = gunfinal.featureCount()
+fc = count.featureCount()
 
 for i in range(0, fc):
-    feat = gunfinal.getFeature(i)
-    print(feat['NAME'], 'Gun Crimes per 10,000 people:', feat['GC_per'], 'Shooting Incidents per 10,000 people:', feat['SS_per'])
+    feat = count.getFeature(i)
+    print(feat['NAME'], 'Gun Crimes per 10,000 people:', feat['GC_per'])
+    
+processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':gunshots, 'FIELD':"NUMPOINTS", 'OUTPUT':"S:/682/Spring20/ecoholan/count2.shp"})
+
+count2 = "S:/682/Spring20/ecoholan/count2.shp"
+iface.addVectorLayer(count2, "count2", "ogr")
+count2 = iface.activeLayer()
+
+pv2 = count2.dataProvider()
+pv2.addAttributes([QgsField('SS_per', QVariant.Double)])
+count2.updateFields()
+
+context2 = QgsExpressionContext()
+context2.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(count2))
+
+with edit(count2):
+    for i in count2.getFeatures():
+        context2.setFeature(i)
+        i['SS_per'] = expression.evaluate(context2)
+        count2.updateFeature(i)
+        
+fc2 = count2.featureCount()
+
+for i in range(0, fc2):
+    feat = count2.getFeature(i)
+    print(feat['NAME'], 'ShotSpotter shooting incidents detected per 10,000 people:', feat['SS_per'])
