@@ -9,3 +9,4 @@
 To determine if expansion of the ShotSpotter gunshot detection network is necessary, the project assessed gun crime rates and ShotSpotter shooting incident detection rates on a per-ward basis. Utilizing publicly available data sources, the number of gun crimes committed per 10,000 people and the number of shooting incidents detected by ShotSpotter per 10,000 people were calculated for each ward and visualized through QGIS 3.49 mapping tools. The calculation process was then automated with Python code, enabling future analyses to be performed on alternate data. Upon inspection of the data products, it is recommended that the ShotSpotter gunshot detection network be expanded into Ward 2.
 
 #### Analysis
+All data used in the project are publicly available on [Open Data DC](http://opendata.dc.gov).
