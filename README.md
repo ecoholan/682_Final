@@ -94,3 +94,4 @@ The initial three lines of code create a new field in 'count' called 'GC_per" th
 The functionality of the code is not exclusive to the three shapefiles obtained for the project. By simply changing the names of temporally different data to reflect the renamed shapefiles (wards, crimes, and gunshots), and possibly adjusting the selection parameters depending on the objective, this code could run the same analysis on other data inputs.
 
 #### Results
+Based on 2017 ShotSpotter data, the ShotSpotter gunshot detection network appears to be present in all but the second and third wards. 
