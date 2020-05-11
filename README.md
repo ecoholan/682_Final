@@ -60,7 +60,7 @@ writer = QgsVectorFileWriter.writeAsVectorFormat(crimes, fn, 'utf-8', \
 driverName = 'ESRI Shapefile', onlySelected = True)
 ```
 
-The 'selectByExpression' function enables all instances of the string 'GUN' be pulled from the METHOD field in 'crimes'. Following the selection, an empty 'guncrimes' shapefile is stored in the working directory and the 'writeAsVectorFormat' function is employed to transfer the contents of the selection into 'guncrimes'. A similar process was used to select all ShotSpotter detected shooting incidents from the year 2017, and read them into the 'SS_2017' point shapefile.
+The 'selectByExpression' function enables all instances of the string 'GUN' be pulled from the 'METHOD' field in 'crimes'. Following the selection, an empty 'guncrimes' shapefile is stored in the working directory and the 'writeAsVectorFormat' function is employed to transfer the contents of the selection into 'guncrimes'. A similar process was used to select all ShotSpotter detected shooting incidents from the year 2017, and read them into the 'SS_2017' point shapefile.
 
 Following the creation of the selection layers the Points in Polygon vector analysis process was used to identify the number of selected features that appeared in each ward:
 
