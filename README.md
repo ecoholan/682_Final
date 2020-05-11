@@ -69,3 +69,21 @@ processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIEL
 ```
 The code specifies the renamed 'Ward_from_2012' shapefile as the input polygon layer, with the 'guncrimes' layer (here characterized as 'fn') occupying the point layer input. The output field is named 'NUMPOINTS' to describe the number of points occurring in each ward, and the new polygon layer containing 'NUMPOINTS' is to be called 'count' and located in the working directory. Again the process is easily reproducible with ShotSpotter data.
 
+Upon creation of the 'count' layer, the following loop structure generates a new field containing the number of gun crimes committed per 10,000 people in each ward:
+
+```ruby
+pv = count.dataProvider()
+pv.addAttributes([QgsField('GC_per', QVariant.Double)])
+count.updateFields()
+
+expression = QgsExpression("NUMPOINTS/(POP_2010/10000)")
+
+context = QgsExpressionContext()
+context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(count))
+
+with edit(count):
+    for i in count.getFeatures():
+        context.setFeature(i)
+        i['GC_per'] = expression.evaluate(context)
+        count.updateFeature(i)
+```
