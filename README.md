@@ -50,3 +50,12 @@ Number of shooting incidents detected by ShotSpotter per 10,000 people in 2017 i
 #### Automation
 After importing the processing package and displaying the three aforementioned shapefiles, the automated code can be described by three processes: the selection of features and subsequent creation of new layers from the selections, the use of the 'countpointsinpolygon' function, and the creation of a field specifying the number of either gun crimes or shooting incidents per 10,000 people in each ward.
 
+After renaming 'Crime_Incidents_in_2017' to 'crimes', and specifying the shapefile as the active layer in the interface, the following snippet of code selects all gun crimes and reads them into the 'guncrimes' shapefile:
+
+```ruby
+crimes.selectByExpression("METHOD = 'GUN'")
+
+fn = "S:/682/Spring20/ecoholan/guncrimes.shp"
+writer = QgsVectorFileWriter.writeAsVectorFormat(crimes, fn, 'utf-8', \
+driverName = 'ESRI Shapefile', onlySelected = True)
+```
