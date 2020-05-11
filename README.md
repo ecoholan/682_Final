@@ -65,5 +65,5 @@ The 'selectByExpression' function enables all instances of the string 'GUN' be p
 Following the creation of the selection layers the Point in Polygon vector analysis process was used to identify the number of selected features that appeared in each ward:
 
 ```ruby
-processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIELD':"NUMPOINTS", / 'OUTPUT':"S:/682/Spring20/ecoholan/count.shp"})
+processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIELD':"NUMPOINTS", 'OUTPUT':"S:/682/Spring20/ecoholan/count.shp"})
 ```
