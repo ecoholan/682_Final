@@ -37,4 +37,12 @@ The thematic map displaying the number of shotting incidents detected by ShotSpo
   </kbd>
 </p>
 
-
+Number of shooting incidents detected by ShotSpotter per 10,000 people in 2017 in each ward:
+- Ward 1: 16.52
+- Ward 2: 0.26
+- Ward 3: 0.00
+- Ward 4: 20.85
+- Ward 5: 56.52
+- Ward 6: 37.12
+- Ward 7: 232.20
+- Ward 8: 289.02
