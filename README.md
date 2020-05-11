@@ -67,3 +67,5 @@ Following the creation of the selection layers the Point in Polygon vector analy
 ```ruby
 processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIELD':"NUMPOINTS", 'OUTPUT':"S:/682/Spring20/ecoholan/count.shp"})
 ```
+The code specifies the renamed 'Ward_from_2012' shapefile as the input polygon layer, with the 'guncrimes' layer (here characterized as 'fn') occupying the point layer input. The output field is named 'NUMPOINTS' to describe the number of points occurring in each ward, and the new polygon layer containing 'NUMPOINTS' is to be called 'count' and located in the working directory. Again the process is easily reproducible with ShotSpotter data.
+
