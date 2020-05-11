@@ -48,3 +48,5 @@ Number of shooting incidents detected by ShotSpotter per 10,000 people in 2017 i
 - Ward 8: 289.02
 
 #### Automation
+After importing the processing package and displaying the three aforementioned shapefiles, the automated code can be described by three processes: the selection of features and subsequent creation of new layers from the selections, the use of the 'countpointsinpolygon' function, and the creation of a field specifying the number of either gun crimes or shooting incidents per 10,000 people in each ward.
+
