@@ -11,4 +11,4 @@ To determine if expansion of the ShotSpotter gunshot detection network is necess
 #### Analysis
 The three shapefiles used in the project are publicly available on [Open Data DC](http://opendata.dc.gov). The Ward_from_2012 shapefile is a polygon layer of Washington D.C.'s 2012 election wards and includes summary demographic attributes such as age and population for each ward. The Crime_Incidents_in_2017 shapefile is a point layer containing every crime committed in Washington D.C. during 2017, with attributes including latitude, longitude, and any associated weapon. The Shot_Spotter_Gun_Shot is a point layer describing the location of every ShotSpotter detected gunshot in Washington D.C. from 2014 until July 2019.
 
-
+The thematic map displaying the number of gun crimes committed per 10,000 people in 2017 in each ward was produced in QGIS 3.49. Using the Field Calculator, all gun crimes were selected from the Crime_Incidents_in_2017 shapefile, and converted into a new point shapefile called 'guncrimes'. The Point in Polygon function within QGIS vector analysis tools was then used to 
