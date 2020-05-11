@@ -30,6 +30,8 @@ writer = QgsVectorFileWriter.writeAsVectorFormat(gunshots, fn2, 'utf-8', \
 driverName = 'ESRI Shapefile', onlySelected = True)
 del(writer)
 
+gunshots.removeSelection()
+
 guncrimes = fn
 iface.addVectorLayer(guncrimes, "guncrimes", "ogr")
 
@@ -87,3 +89,14 @@ fc2 = count2.featureCount()
 for i in range(0, fc2):
     feat = count2.getFeature(i)
     print(feat['NAME'], 'ShotSpotter shooting incidents detected per 10,000 people:', feat['SS_per'])
+
+QgsProject.instance().removeMapLayer(count2.id())
+
+SS_2017 = iface.activeLayer()
+QgsProject.instance().removeMapLayer(SS_2017.id())
+
+count = iface.activeLayer()
+QgsProject.instance().removeMapLayer(count.id())
+
+guncrimes = iface.activeLayer()
+QgsProject.instance().removeMapLayer(guncrimes.id())
