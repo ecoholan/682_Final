@@ -94,4 +94,5 @@ The initial three lines of code create a new field in 'count' called 'GC_per" th
 The functionality of the code is not exclusive to the three shapefiles obtained for the project. By simply changing the names of temporally different data to reflect the renamed shapefiles (wards, crimes, and gunshots), and possibly adjusting the selection parameters depending on the objective, this code could run the same analysis on other data inputs.
 
 #### Results
-Based on 2017 ShotSpotter data, the ShotSpotter gunshot detection network appears to be present in all but the second and third wards. 
+Based on 2017 ShotSpotter data, the ShotSpotter gunshot detection network appears to be present in all but the second and third wards. Ward 2 showcased a rate of 7.05 gun crimes per 10,000 people and Ward 3 sported a rate of 2.66 gun crimes per 10,000 people. ShotSpotters stationed in adjacent wards detected multiple gunshots in Ward 2 while no gunshots were detected in Ward 3. For these reasons, it is recommended that the ShotSpotter gunshot detection network expand coverage into Ward 2 while also maintaining all current locations in Washington D.C.
+
