@@ -96,3 +96,4 @@ The functionality of the code is not exclusive to the three shapefiles obtained 
 #### Results
 Based on 2017 ShotSpotter data, the ShotSpotter gunshot detection network appears to be present in all but the second and third wards. Ward 2 showcased a rate of 7.05 gun crimes per 10,000 people and Ward 3 sported a rate of 2.66 gun crimes per 10,000 people. ShotSpotters stationed in adjacent wards detected multiple gunshots in Ward 2 while no gunshots were detected in Ward 3. For these reasons, it is recommended that the ShotSpotter gunshot detection network expand coverage into Ward 2 while also maintaining all current locations in Washington D.C.
 
+The analysis was limited by data availability.
