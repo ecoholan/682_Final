@@ -46,3 +46,5 @@ Number of shooting incidents detected by ShotSpotter per 10,000 people in 2017 i
 - Ward 6: 37.12
 - Ward 7: 232.20
 - Ward 8: 289.02
+
+#### Automation
