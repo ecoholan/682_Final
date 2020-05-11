@@ -19,5 +19,5 @@ The thematic map displaying the number of gun crimes committed per 10,000 people
   <a href="#">Link 2</a> |
   <a href="#">Link 3</a>
   <br><br>
-  <img src="http://s.4cdn.org/image/title/105.gif">
+  <img src="https://github.com/ecoholan/682_Final/blob/master/GC.jpg">
 </p>
