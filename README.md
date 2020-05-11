@@ -67,6 +67,7 @@ Following the creation of the selection layers the Point in Polygon vector analy
 ```ruby
 processing.run("qgis:countpointsinpolygon", {'POLYGONS':ward, 'POINTS':fn, 'FIELD':"NUMPOINTS", 'OUTPUT':"S:/682/Spring20/ecoholan/count.shp"})
 ```
+
 The code specifies the renamed 'Ward_from_2012' shapefile as the input polygon layer, with the 'guncrimes' layer (here characterized as 'fn') occupying the point layer input. The output field is named 'NUMPOINTS' to describe the number of points occurring in each ward, and the new polygon layer containing 'NUMPOINTS' is to be called 'count' and located in the working directory. Again the process is easily reproducible with ShotSpotter data.
 
 Upon creation of the 'count' layer, the following loop structure generates a new field containing the number of gun crimes committed per 10,000 people in each ward:
@@ -87,3 +88,7 @@ with edit(count):
         i['GC_per'] = expression.evaluate(context)
         count.updateFeature(i)
 ```
+
+The initial three lines of code create a new field in 'count' called 'GC_per" that is specified to be data type double. The 'QgsExpression' function then stores the requisite expression in variable 'expression'. The following two lines of code encapsulate the parameters for which 'expression' should be evaluated, and are stored in variable 'context'. Utilizing a looping structure, the expression is subsequently evaluated for every feature in the field 'GC_per', displaying the number of gun crimes committed per 10,000 people in each ward. Like all previous code, the preceding structure is also compatible with ShotSpotter data.
+
+The functionality of the code is not exclusive to the three shapefiles obtained for the project. By simply changing the names of temporally different data to reflect the renamed shapefiles (wards, crimes, and gunshots), and possibly adjusting the selection parameters depending on the objective, this code could run the same analysis on different data.
