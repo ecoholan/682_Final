@@ -20,3 +20,5 @@ The thematic map displaying the number of gun crimes committed per 10,000 people
 </p>
 
 The thematic map displaying the number of shotting incidents detected by ShotSpotter per 10,000 people in 2017 in each ward was produced in QGIS 3.49. Using Selection Expression, all shooting incidents from the year 2017 were selected from the 'Shot_Spotter_Gun_Shot' shapefile, and converted into a new point shapefile called 'SS_2017'. The Point in Polygon function within QGIS vector analysis tools was then used to combine 'Ward_from_2012' and 'SS_2017', creating a new polygon shapefile identifying the number of shooting incidents in each ward, called 'count2'. Within the Field Calulator in 'count2', the number of shooting incidents in each ward (NUMPOINTS) was divided by the quotient of 2010 population (POP_2010) and 10,000, producing new field known as SS_per, which indicated the number of shooting incidents per 10,000 people in 2017 in each ward. Ward labels and thematic colorization were added to the map using the Properties tab in 'count', and standard map elements were added through the Map Layout window.
+
+
