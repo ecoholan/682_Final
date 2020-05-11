@@ -26,3 +26,13 @@ The thematic map displaying the number of shotting incidents detected by ShotSpo
     <img src="https://github.com/ecoholan/682_Final/blob/master/SS.jpg">
   </kbd>
 </p>
+
+Number of gun crimes committed per 10,000 people in 2017 in each ward:
+- Ward 1: 15.31
+- Ward 2: 7.05
+- Ward 3: 2.66
+- Ward 4: 16.63
+- Ward 5: 36.07
+- Ward 6: 21.25
+- Ward 7: 57.84
+- Ward 8: 57.70
